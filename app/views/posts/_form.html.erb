@@ -1,17 +1,4 @@
-<div class="row">
-  <div class="span6">
-    <% if @post.errors.any? %>
-      <div class="alert alert-error">
-        <p>There are some errors:</p>
-        <ul>
-          <% @post.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-  </div>
-</div>
+<%= render 'shared/form_errors', form_obj: @post %>
 
 <div class="row">
   <div class="span6 well">

@@ -1,0 +1,14 @@
+<%= render 'shared/form_errors', form_obj: @category %>
+
+<div class="row">
+  <div class="span6 well">
+    <%= form_for @category do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+
+      <hr>
+
+      <%= f.submit class: 'btn btn-success' %>
+    <% end %>
+  </div>
+</div>

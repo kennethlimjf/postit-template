@@ -1,0 +1,14 @@
+<% if form_obj.errors.any? %>
+  <div class="row">
+    <div class="span6">
+      <div class="alert alert-error">
+          <p>There are some errors:</p>
+          <ul>
+            <% form_obj.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+<% end %>
