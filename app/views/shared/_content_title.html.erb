@@ -1,2 +1,5 @@
-<p class="lead"><%= title %></p>
+<% all_posts = link_to('All Posts', root_path) %>
+<% trailing = (defined? title) ? "&raquo; #{title}" : "" %>
+
+<p class="lead"><%= "#{all_posts} #{trailing}".html_safe %></p>
 <hr/>
