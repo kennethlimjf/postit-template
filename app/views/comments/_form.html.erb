@@ -1,0 +1,11 @@
+<%= render 'shared/form_errors', form_obj: @comment %>
+
+<div class="row">
+  <div class="span6 well">
+    <%= form_for [@post, @comment] do |f| %>
+      <%= f.text_area :body %>
+      <br>
+      <%= f.submit class: "btn btn-info" %>
+    <% end %>
+  </div>
+</div>

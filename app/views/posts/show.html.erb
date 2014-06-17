@@ -2,10 +2,26 @@
   <%= render @post.categories %>
 </p>
 
-<%= render 'shared/content_title', title: @post.title %>
+<%= render 'shared/content_title', title: "Post: #{@post.title}" %>
 
 <p><strong>URL: </strong><%= @post.url %></p>
 <p><strong>Description: </strong><%= @post.description %></p>
 
 <hr/>
+
+<h4>Create Comment</h4>
+<%= render 'comments/form' %>
+
+<hr/>
+
 <small><%= link_to 'Edit', edit_post_path(@post)%> | <%= link_to 'Back to All Posts', posts_path %></small>
+
+<hr/>
+
+<h4>Comments</h4>
+
+<div class="row">
+  <div class="span10 well">
+    <%= render(partial: 'comments/comment', collection: @post.comments.order("created_at DESC"), spacer_template: 'comments/comment_spacer') || 'No comments for post.' %>
+  </div>
+</div>
