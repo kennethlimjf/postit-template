@@ -7,12 +7,15 @@
     <p><%= post.description %></p>
     <p>
       <span class="quiet">Posted by</span>
-      <%= post.creator.username %>
+      <%= (post.creator.nil?) ? 'Anonymous' : post.creator.username %>
       <small>at <%= post.created_at %></small>
     </p>
     <small>
       <span>
         <%= link_to "#{post.comments.size} comments", post_path(post) %>
+      </span>
+      <span>
+        <%= link_to "(Edit)", edit_post_path(post) %>
       </span>
     </small>
   </div>

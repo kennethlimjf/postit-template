@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="span6">
+    <% if @post.errors.any? %>
+      <div class="alert alert-error">
+        <p>There are some errors:</p>
+        <ul>
+          <% @post.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span6 well">
+    <%= form_for @post do |f| %>
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+
+      <%= f.label :url %>
+      <%= f.text_field :url %>
+
+      <%= f.label :description %>
+      <%= f.text_area :description %>
+
+      <hr>
+
+      <%= f.submit class: "btn btn-success" %>
+    <% end %>
+  </div>
+</div>
