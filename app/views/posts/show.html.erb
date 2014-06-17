@@ -1,5 +1,10 @@
-<h3>Post Details</h3>
+<p>
+  <%= render @post.categories %>
+</p>
 
-<p><strong>Title: </strong><%= @post.title %></p>
+<%= render 'shared/content_title', title: @post.title %>
+
 <p><strong>URL: </strong><%= @post.url %></p>
 <p><strong>Description: </strong><%= @post.description %></p>
+
+<hr/>
