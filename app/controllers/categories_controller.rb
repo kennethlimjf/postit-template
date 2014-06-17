@@ -5,6 +5,7 @@ class CategoriesController < ApplicationController
 
   def create
     @category = Category.new(category_params)
+    @category.name.capitalize!
 
     if @category.save
       flash[:notice] = 'Category has been created.'
