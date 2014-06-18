@@ -9,6 +9,13 @@
       <%= f.label :url %>
       <%= f.text_field :url %>
 
+      <br>
+
+      <%= f.label :category_ids, 'Category' %>
+      <%= f.select :category_ids, Category.all.map { |c| [ c.name, c.id ] }, {}, { multiple: 'multiple', size: "#{Category.all.size}" } %>
+
+      <br>
+
       <%= f.label :description %>
       <%= f.text_area :description %>
 
