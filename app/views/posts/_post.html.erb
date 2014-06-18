@@ -7,8 +7,8 @@
     <p><%= post.description %></p>
     <p>
       <span class="quiet">Posted by</span>
-      <%= (post.creator.nil?) ? 'Anonymous' : post.creator.username %>
-      <small>at <%= datetime_formatter(post.created_at) %></small>
+      <%= display_user(post.creator) %>, 
+      <small><%= datetime_formatter(post.created_at) %></small>
     </p>
     <small>
       <span>

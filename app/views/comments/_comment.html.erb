@@ -1,2 +1,6 @@
 <p><%= comment.body %></p>
-<p><small>posted at <%= comment.created_at %></small></p>
+<p>
+  <span class="quiet">Posted by</span>
+  <%= display_user(@post.creator) %>
+  <small><%= datetime_formatter(comment.created_at) %></small>
+</p>
