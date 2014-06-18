@@ -1,0 +1,41 @@
+<h4>Explore Non Model Backed Form Helpers</h4>
+
+<%= form_tag explore_path, method: 'get' do %>
+<div class="row">
+  <div class="span6 well">
+    <%= label_tag :name, 'Name: ' %>
+    <%= text_field_tag :name %>
+    <br>
+    <div style="display: flex;">
+      <%= radio_button_tag :gender, 'male' %> &nbsp; <%= label_tag :gender_male, 'Male' %>
+    </div>
+    <div style="display: flex;">
+      <%= radio_button_tag :gender, 'female' %> &nbsp; <%= label_tag :gender_female, 'Female' %>
+    </div>
+    <br>
+    <%= label_tag :user_phone, 'Phone: ' %>
+    <%= telephone_field(:user, :phone) %>
+    <br>
+    <%= select_tag(:city_id, options_for_select([['Libson', 1],['Madrid', 2],['Boston', 3],['New York', 4],['California', 5]], 3)) %>
+    <br>
+    <%= collection_select(:post, :category_id, Category.all, :id, :name) %>
+      <%= time_zone_select(:post, :time_zone) %>
+      <%= select_date Date.today, prefix: :post %>
+
+    <hr>
+
+    <%= submit_tag 'Submit', class: 'btn btn-block btn-success' %>
+
+  </div>
+</div>
+<% end %>
+
+<h4>Explore Model Based Form Helper for Select</h4>
+<%= form_for Post.new do |f| %>
+  <div class="row">
+    <div class="span6 well">
+      <%= f.label :category %>
+      <%= date_select :person, :birth_date %>
+    </div>
+  </div>
+<% end %>

@@ -36,6 +36,8 @@ class PostsController < ApplicationController
     end
   end
 
+  def explore; end
+
 
   private
     def set_post
