@@ -1,0 +1,42 @@
+<%= render 'shared/content_title', title: "View Profile: #{current_user.username}" %>
+
+<div class="row">
+  <div class="span12 well">
+    <p><strong>User name:</strong> <%= current_user.username %></p>
+    <p><strong>Time zone:</strong> <%= display_timezone_info(current_user.time_zone) %></p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span12">
+    <h5><%= current_user.username %> Activity</h5>
+
+    <ul class="nav nav-tabs" id="myTab">
+      <li class="active"><a href="#posts">Posts</a></li>
+      <li><a href="#comments">Comments</a></li>
+    </ul>
+ 
+    <div class="tab-content">
+      <div class="tab-pane active" id="posts">
+        <%= render(@posts) || "No posts by #{current_user.username}" %>
+      </div>
+      <div class="tab-pane" id="comments">
+        <div class="span6 well">
+          <%= render(partial: 'comments/comment', collection: @comments.order("created_at DESC"), spacer_template: 'comments/comment_spacer') || "No comments by #{current_user.username}" %>
+        </div>
+      </div>
+    </div>
+ 
+    <script>
+      $(function () {
+        $('#myTab a:first').click( function(){
+          $(this).tab('show');
+        });
+        $('#myTab a:last').click( function(){
+          $(this).tab('show');
+        });
+      })
+    </script>
+
+  </div>
+</div>

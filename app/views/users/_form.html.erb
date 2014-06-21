@@ -1,0 +1,26 @@
+<%= form_tag url_path, method: method do %>
+  <div class="row">
+    <div class="span6 well">
+      <%= label_tag 'user[username]', 'User Name:' %>
+      <% if url_path == register_path %>
+        <%= text_field_tag 'user[username]', user ? user.username : "" %>
+      <% else %>
+        <%= text_field_tag 'user[username]', user.username, disabled: true %>
+      <% end %>
+
+      <%= label_tag 'user[password]', 'Password:' %>
+      <%= password_field_tag 'user[password]' %>
+
+      <%= label_tag 'user[password_confirmation]', 'Confirm Password:' %>
+      <%= password_field_tag 'user[password_confirmation]' %>
+      
+      <%= label_tag 'user[time_zone]', 'Country/Time Zone' %>
+      <%= time_zone_select(:user, :time_zone, nil, default: user ? user.time_zone : "") %>
+      
+      <hr>
+
+      <%= submit_tag( (url_path==register_path ? 'Create Account' : 'Update Profile'),
+                      class: 'btn btn-success') %>
+    </div>
+  </div>
+<% end %>
