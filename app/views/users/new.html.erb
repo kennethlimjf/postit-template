@@ -1,0 +1,35 @@
+<h4>Register New User</h4>
+
+<% if @user && @user.errors.any? %>
+  <div class="row">
+    <div class="span6">
+      <div class="alert alert-error">
+          <p>There are some errors:</p>
+          <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<%= form_tag '/register' do %>
+  <div class="row">
+    <div class="span6 well">
+      <%= label_tag :username, 'User Name:' %>
+      <%= text_field_tag :username, @user ? @user.username : "" %>
+
+      <%= label_tag :password, 'Password:' %>
+      <%= password_field_tag :password %>
+
+      <%= label_tag :password_confirm, 'Confirm Password:' %>
+      <%= password_field_tag :password_confirm %>
+      
+      <hr>
+
+      <%= submit_tag 'Create New User', class: 'btn btn-success' %>
+    </div>
+  </div>
+<% end %>

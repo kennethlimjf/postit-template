@@ -1,0 +1,20 @@
+<h4>Login</h4>
+<div class="row">
+  <div class="span6 well">
+    <%= form_tag login_path do %>
+      <%= label_tag :username, 'Username:' %>
+      <%= text_field_tag :username %>
+
+      <%= label_tag :password, 'Password:' %>
+      <%= password_field_tag :password %>
+
+      <hr>
+
+      <span>
+        <%= submit_tag 'Login', class: 'btn btn-info' %>
+        &nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;&nbsp;&nbsp;&nbsp;
+        <%= link_to 'Register a new account here', register_path %>
+      </span>
+    <% end %>
+  </div>
+</div>
