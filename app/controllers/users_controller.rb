@@ -6,7 +6,8 @@ class UsersController < ApplicationController
     @user  = User.new( username: params[:username], password: params[:password], password_confirmation: params[:password_confirm] )
 
     if @user.save
-      flash[:notice] = "New user has been created. You can now login."
+      session[:user_id] = @user.id
+      flash[:notice] = "New user has been created. You are logged in now."
       redirect_to root_path
     else
       render :new
