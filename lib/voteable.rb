@@ -4,10 +4,18 @@ module Voteable
   end
 
   def up_votes_score
-    self.votes.where(vote: 1)
+    up_votes.count
   end
 
   def down_votes_score
+    down_votes.count
+  end
+
+  def up_votes
+    self.votes.where(vote: 1)
+  end
+
+  def down_votes
     self.votes.where(vote: -1)
   end
 end
