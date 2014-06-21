@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    if current_user.update_attributes(user_params)
+    if current_user.update_attributes(update_user_params)
       flash[:notice] = "Profile successfully updated."
       redirect_to profile_path
     else
@@ -34,5 +34,9 @@ class UsersController < ApplicationController
   private
     def user_params
       params.require(:user).permit(:username, :password, :password_confirmation, :time_zone)
+    end
+
+    def update_user_params
+      params.require(:user).permit(:password, :password_confirmation, :time_zone)
     end
 end
