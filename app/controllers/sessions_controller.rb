@@ -6,6 +6,7 @@ class SessionsController < ApplicationController
     user = User.find_by( username: params[:username] ).try( :authenticate, params[:password] )
 
     if user
+      reset_session
       session[:user_id] = user.id
       flash[:notice] = "You have successfully logged in."
       redirect_to root_path
@@ -16,7 +17,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session[:user_id] = nil
+    reset_session
     flash[:notice] = "You have succesfully logged out."
     redirect_to root_path
   end

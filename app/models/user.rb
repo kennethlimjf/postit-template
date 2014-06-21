@@ -9,8 +9,6 @@ class User < ActiveRecord::Base
   validate :time_zone_is_valid
 
   def time_zone_is_valid
-    unless Time.find_zone(time_zone)
-      errors[:time_zone] << "is a invalid time zone." 
-    end
+    errors[:time_zone] << "is a invalid time zone." unless Time.find_zone(time_zone)
   end
 end
