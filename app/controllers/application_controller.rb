@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   end
 
   def logged_in?
-    current_user ? true : false
+    !!current_user
   end
 
   protected
