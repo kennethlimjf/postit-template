@@ -12,17 +12,17 @@
     <h5><%= current_user.username %> Activity</h5>
 
     <ul class="nav nav-tabs" id="myTab">
-      <li class="active"><a href="#posts">Posts</a></li>
-      <li><a href="#comments">Comments</a></li>
+      <li class="active"><a href="#posts">Posts (<%= current_user.posts.size %>)</a></li>
+      <li><a href="#comments">Comments (<%= current_user.comments.size %>)</a></li>
     </ul>
  
     <div class="tab-content">
       <div class="tab-pane active" id="posts">
-        <%= render(@posts) || "No posts by #{current_user.username}" %>
+        <%= render(current_user.posts) || "No posts by #{current_user.username}" %>
       </div>
       <div class="tab-pane" id="comments">
         <div class="span6 well">
-          <%= render(partial: 'comments/comment', collection: @comments.order("created_at DESC"), spacer_template: 'comments/comment_spacer') || "No comments by #{current_user.username}" %>
+          <%= render(partial: 'comments/comment', collection: current_user.comments.order("created_at DESC"), spacer_template: 'comments/comment_spacer') || "No comments by #{current_user.username}" %>
         </div>
       </div>
     </div>

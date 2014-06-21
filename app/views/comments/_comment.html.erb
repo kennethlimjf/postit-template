@@ -4,3 +4,6 @@
   <%= display_user(comment.creator) %>
   <small><%= datetime_formatter(comment.created_at) %></small>
 </p>
+<p>
+  <span class="quiet">Related to <%= link_to comment.post.title, post_path(comment.post) %></span>
+</p>
