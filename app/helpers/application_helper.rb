@@ -40,7 +40,7 @@ module ApplicationHelper
   end
 
   def vote_score_id(obj)
-    "vote-score-#{obj.class.to_s.downcase}-#{obj.id}"
+    "vote-score-#{obj.class.to_s.downcase}-#{obj.slug}"
   end
 
 end
