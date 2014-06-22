@@ -40,7 +40,8 @@ module ApplicationHelper
   end
 
   def vote_score_id(obj)
-    "vote-score-#{obj.class.to_s.downcase}-#{obj.slug}"
+    ending_name = obj.try(:slug) || obj.id
+    "vote-score-#{obj.class.to_s.downcase}-#{ending_name}"
   end
 
 end
