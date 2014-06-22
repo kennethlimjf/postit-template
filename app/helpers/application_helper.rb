@@ -6,7 +6,7 @@ module ApplicationHelper
 
   def datetime_formatter(datetime)
     if datetime
-      time_zone = (current_user) ? current_user.time_zone : "UTC"
+      time_zone = current_user.try(:time_zone) || "UTC"
       datetime.in_time_zone(time_zone).strftime("%d %b %Y,%l:%M %p (%Z%z)")
     else
       "at unknown time"
@@ -22,7 +22,7 @@ module ApplicationHelper
   end
 
   def display_user(user)
-    (user.nil?) ? 'Anonymous' : user.username
+    user.try(:username) || 'Anonymous'
   end
 
   def display_timezone_info(country_string)
