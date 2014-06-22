@@ -1,4 +1,17 @@
 <div class="row">
+  <div class="span2 well vote-panel">
+    <%= link_to vote_post_path({ id: post.id, vote: 1 }), method: 'post', class: 'vote-arrow' do %>
+      <i class="vote-arrow icon-arrow-up"></i>
+    <% end %>
+    <br>
+    <h3 class="vote-score <%= vote_score_color(post.total_votes_score) %>"><%= post.total_votes_score %></h3>
+    <br>
+    <%= link_to vote_post_path({ id: post.id, vote: -1 }), method: 'post', class: 'vote-arrow' do %>
+      <i class="vote-arrow icon-arrow-down"></i>
+    <% end %>
+  </div>
+
+
   <div class="span8 well">
 
     <%= render post.categories %>

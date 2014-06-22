@@ -22,4 +22,14 @@ module ApplicationHelper
     Time.find_zone(country_string).to_s
   end
 
+  def vote_score_color(total_votes_score)
+    if total_votes_score > 0
+      return "vote-score-positive"
+    elsif total_votes_score == 0
+      return "vote-score-neutral"
+    else
+      return "vote-score-negative"
+    end
+  end
+
 end

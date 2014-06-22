@@ -43,3 +43,37 @@ div.comment_votes {
   padding: 10px;
 }
 
+h3.vote-score {
+  line-height: 0;
+  margin: 20px 0 0 0;
+  padding: 0;
+  text-align: center;
+}
+
+a.vote-arrow:hover, i.vote-arrow:hover {
+  text-decoration: none;
+}
+
+.vote-score-positive {
+  color: #27ae60;
+}
+
+.vote-score-neutral {
+  color: #7f8c8d;
+}
+
+.vote-score-negative {
+  color: #e74c3c;
+}
+
+i.vote-arrow {
+  margin: 0 0 0 33px;
+  padding: 0;
+}
+
+div.vote-panel {
+  width: 80px;
+  height: 80px;
+  border-radius: 80px;
+}
+
