@@ -1,0 +1,20 @@
+<% if @vote.valid? %>
+
+  var total_votes_score = <%= @vote.voteable.total_votes_score %>;
+  var element_id = '#<%= vote_score_id(@vote.voteable) %>';
+  var element_class = 'vote-score-neutral'
+
+  if (total_votes_score < 0) {
+    element_class = 'vote-score-negative'
+  } else if (total_votes_score > 0) {
+    element_class = 'vote-score-positive'
+  }
+
+  $(element_id).html(total_votes_score);
+  $(element_id).removeClass();
+  $(element_id).addClass(element_class);
+
+  alert('Your vote has been submitted.');
+<% else %>
+  alert('<%="#{@vote.errors[:creator].first}"%>');
+<% end %>

@@ -1,5 +1,6 @@
 class Post < ActiveRecord::Base
   include Voteable
+  include Slugable
 
   belongs_to :creator, foreign_key: 'user_id', class_name: 'User'
   has_many :comments
@@ -9,4 +10,6 @@ class Post < ActiveRecord::Base
 
   validates :title, presence: true
   validates :url, presence: true
+
+  after_validation { generate_slug(self.title) }
 end

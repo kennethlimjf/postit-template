@@ -9,7 +9,7 @@
 
     <%= render post.categories %>
 
-    <h4><%= link_to post.title, fix_url(post.url) %></h4>
+    <h4><%= link_to post.title, post_path(post) %> &nbsp;&nbsp;&nbsp;<small><%= link_to 'View Site', fix_url(post.url) %></small> </h4>
     <p><%= post.description %></p>
 
     <%= render 'shared/creator_details', obj: post %>

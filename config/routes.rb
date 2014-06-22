@@ -21,4 +21,7 @@ PostitTemplate::Application.routes.draw do
   get '/login', to: 'sessions#new', as: :login
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy', as: :logout
+
+  # Slug generator
+  post '/slug', to: 'slugs#slug', as: :slug
 end

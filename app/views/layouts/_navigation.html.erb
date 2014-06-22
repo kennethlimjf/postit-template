@@ -55,6 +55,11 @@
               <i class="icon-pencil"></i> Edit Profile
             <% end %>
           </li>
+          <li>
+            <%= link_to slug_path, method: 'post', confirm: 'Are you sure you want to generate all slugs?' do %>
+              <i class="icon-warning-sign"></i> Generate Slug
+            <% end %>
+          </li>
         </ul>
       </div>
 

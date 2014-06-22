@@ -4,7 +4,7 @@
   <%= render @post.categories %>
 </p>
 
-<p><strong>URL: </strong><%= @post.url %></p>
+<p><strong>URL: </strong><%= link_to @post.url, fix_url(@post.url) %></p>
 <p><strong>Description: </strong><%= @post.description %></p>
 
 <br>
