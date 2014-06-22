@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 8 }, on: :create
   validate :time_zone_is_valid
 
-  after_validation { generate_slug(self.username) }
+  before_save { generate_slug(self.username) }
 
   def time_zone_is_valid
     errors[:time_zone] << "is a invalid time zone." unless Time.find_zone(time_zone)

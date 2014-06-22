@@ -11,5 +11,5 @@ class Post < ActiveRecord::Base
   validates :title, presence: true
   validates :url, presence: true
 
-  after_validation { generate_slug(self.title) }
+  before_save { generate_slug(self.title) }
 end
