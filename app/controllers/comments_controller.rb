@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :authorize_user, only: [:create]
+  before_action :authorize_user, only: [:create, :vote]
 
   def create
     @post = Post.find(params[:post_id])
