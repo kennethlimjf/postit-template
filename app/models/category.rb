@@ -6,5 +6,5 @@ class Category < ActiveRecord::Base
 
   validates :name, presence: true, uniqueness: true
 
-  after_validation { generate_slug(self.name) }
+  before_save { generate_slug(self.name) }
 end
