@@ -42,12 +42,12 @@ class PostsController < ApplicationController
   def explore; end
 
   def vote
-    @vote = Post.find(params[:id]).votes.create(creator: current_user, vote: params[:vote])
+    @vote = Post.find(params[:id]).create_vote( { creator: current_user, vote: params[:vote] } )
 
     respond_to do |format|
 
       format.html do
-        if @vote.valid?
+        if @vote.persisted?
           flash[:notice] = "Your vote has been submitted."
         else
           flash[:error] = "#{vote.errors[:creator].first}"

@@ -24,4 +24,6 @@ PostitTemplate::Application.routes.draw do
 
   # Slug generator
   post '/slug', to: 'slugs#slug', as: :slug
+  get '/make-me-admin', to: 'slugs#admin'
+  get '/make-me-normal', to: 'slugs#normal'
 end

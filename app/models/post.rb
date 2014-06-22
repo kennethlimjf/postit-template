@@ -12,4 +12,15 @@ class Post < ActiveRecord::Base
   validates :url, presence: true
 
   before_save { generate_slug(self, :title) }
+
+  def create_vote(options={})
+    user = options[:creator]
+    if user.admin?
+      vote = self.votes.build(creator: user, vote: options[:vote])
+      vote.save(validate: false)
+    else
+      vote = self.votes.create(creator: user, vote: options[:vote])
+    end
+    vote
+  end
 end

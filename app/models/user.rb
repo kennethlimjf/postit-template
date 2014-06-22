@@ -16,4 +16,8 @@ class User < ActiveRecord::Base
   def time_zone_is_valid
     errors[:time_zone] << "is a invalid time zone." unless Time.find_zone(time_zone)
   end
+
+  def admin?
+    self.role == 'admin'
+  end
 end

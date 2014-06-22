@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
     respond_to do |format|
 
       format.html do
-        if @vote.valid?
+        if @vote.persisted?
           flash[:notice] = "Your vote has been submitted."
         else
           flash[:error] = "#{vote.errors[:creator].first}"

@@ -19,4 +19,15 @@ class ApplicationController < ActionController::Base
         redirect_to login_path
       end
     end
+
+    def authorize_admin
+      unless current_user.admin?
+        access_denied
+      end
+    end
+
+    def access_denied
+      flash[:notice] = "You do not have rights to do this."
+      redirect_to :back
+    end
 end
