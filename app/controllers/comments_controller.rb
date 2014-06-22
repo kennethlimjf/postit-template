@@ -15,14 +15,23 @@ class CommentsController < ApplicationController
   end
 
   def vote
-    vote = Comment.find(params[:id]).votes.create(creator: current_user, vote: params[:vote])
+    @vote = Comment.find(params[:id]).votes.create(creator: current_user, vote: params[:vote])
 
-    if vote.valid?
-      flash[:notice] = "Your vote has been submitted."
-    else
-      flash[:error] = "#{vote.errors[:creator].first}"
+    respond_to do |format|
+
+      format.html do
+        if @vote.valid?
+          flash[:notice] = "Your vote has been submitted."
+        else
+          flash[:error] = "#{vote.errors[:creator].first}"
+        end
+
+        redirect_to :back
+      end
+
+      format.js { render 'votes/vote' }
+
     end
-
-    redirect_to :back
   end
+
 end
