@@ -3,12 +3,18 @@ module Sluggable
   def generate_slug(obj, property)
     generated_slug = obj[property].strip.gsub(/[[:space:]]/, "-").gsub(/[^A-Za-z0-9\-]/, "").gsub(/-+/, "-").downcase
 
-    count = nil
-    until count == 0
-      count = obj.class.where('slug LIKE ?', "#{generated_slug}%").count
-      generated_slug = (count == 0) ? generated_slug : generated_slug+"-#{count+1}"      
+    size = nil
+    counter = 0
+    until size == 0
+      if counter == 0
+        size = obj.class.where('slug LIKE ?', "#{generated_slug}").size
+      else
+        size = obj.class.where('slug LIKE ?', "#{generated_slug}-#{counter}").size
+      end
+      counter+=1 if size > 0
     end
 
+    generated_slug = "#{generated_slug}-#{counter}" if counter > 0
     self.slug = generated_slug
   end
 
