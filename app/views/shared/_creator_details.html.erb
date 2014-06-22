@@ -1,0 +1,5 @@
+<p>
+  <span class="quiet">Posted by</span> <%= link_to display_user(obj.creator), profile_path(obj.creator) %>, <small><%= period(obj.created_at) %></small>
+  <br>
+  <span class="time"><i class="icon-time"></i> <%= datetime_formatter(obj.created_at) %></span>
+</p>

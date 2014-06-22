@@ -1,28 +1,28 @@
-<%= render 'shared/content_title', title: "View Profile: #{current_user.username}" %>
+<%= render 'shared/content_title', title: "View Profile: #{@user.username}" %>
 
 <div class="row">
   <div class="span12 well">
-    <p><strong>User name:</strong> <%= current_user.username %></p>
-    <p><strong>Time zone:</strong> <%= display_timezone_info(current_user.time_zone) %></p>
+    <p><strong>User name:</strong> <%= @user.username %></p>
+    <p><strong>Time zone:</strong> <%= display_timezone_info(@user.time_zone) %></p>
   </div>
 </div>
 
 <div class="row">
   <div class="span12">
-    <h5><%= current_user.username %> Activity</h5>
+    <h5><%= @user.username %> Activity</h5>
 
     <ul class="nav nav-tabs" id="myTab">
-      <li class="active"><a href="#posts">Posts (<%= current_user.posts.size %>)</a></li>
-      <li><a href="#comments">Comments (<%= current_user.comments.size %>)</a></li>
+      <li class="active"><a href="#posts">Posts (<%= @user.posts.size %>)</a></li>
+      <li><a href="#comments">Comments (<%= @user.comments.size %>)</a></li>
     </ul>
  
     <div class="tab-content">
       <div class="tab-pane active" id="posts">
-        <%= render(current_user.posts) || "No posts by #{current_user.username}" %>
+        <%= render(@user.posts) || "No posts by #{@user.username}" %>
       </div>
       <div class="tab-pane" id="comments">
         <div class="span8 well">
-          <%= render(partial: 'comments/comment', collection: current_user.comments.order("created_at DESC"), spacer_template: 'comments/comment_spacer') || "No comments by #{current_user.username}" %>
+          <%= render(partial: 'comments/comment', collection: @user.comments.order("created_at DESC"), locals: { display_post: true }, spacer_template: 'comments/comment_spacer') || "No comments by #{@user.username}" %>
         </div>
       </div>
     </div>

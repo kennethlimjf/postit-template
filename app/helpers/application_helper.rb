@@ -7,8 +7,15 @@ module ApplicationHelper
   def datetime_formatter(datetime)
     if datetime
       time_zone = (current_user) ? current_user.time_zone : "UTC"
-      time = "#{datetime.in_time_zone(time_zone).strftime("%d %b %Y,%l:%M %p (%Z%z)")}"
-      "#{distance_of_time_in_words_to_now(datetime)} ago at #{time}"
+      datetime.in_time_zone(time_zone).strftime("%d %b %Y,%l:%M %p (%Z%z)")
+    else
+      "at unknown time"
+    end
+  end
+
+  def period(datetime)
+    if datetime
+      "#{distance_of_time_in_words_to_now(datetime)} ago"
     else
       "at unknown time"
     end

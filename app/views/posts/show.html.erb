@@ -27,6 +27,6 @@
       <hr>
     <% end %>
 
-    <%= render(partial: 'comments/comment', collection: @post.comments.order("created_at DESC"), spacer_template: 'comments/comment_spacer') || 'No comments for post.' %>
+    <%= render(partial: 'comments/comment', collection: @post.comments.order("created_at DESC"), locals: { display_post: false }, spacer_template: 'comments/comment_spacer') || 'No comments for post.' %>
   </div>
 </div>

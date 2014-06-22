@@ -11,11 +11,9 @@
 
     <h4><%= link_to post.title, fix_url(post.url) %></h4>
     <p><%= post.description %></p>
-    <p>
-      <span class="quiet">Posted by</span>
-      <%= display_user(post.creator) %>, 
-      <small><%= datetime_formatter(post.created_at) %></small>
-    </p>
+
+    <%= render 'shared/creator_details', obj: post %>
+
     <small>
       <span>
         <%= link_to "#{post.comments.size} #{"comment".pluralize(post.comments.size)}", post_path(post) %>

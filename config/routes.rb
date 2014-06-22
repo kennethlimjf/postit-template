@@ -12,10 +12,10 @@ PostitTemplate::Application.routes.draw do
   # User
   get '/register', to: 'users#new', as: :register
   post '/register', to: 'users#create'
-  get '/profile', to: 'users#show', as: :profile
-  get 'profile/edit', to: 'users#edit', as: :edit_profile
-  patch 'profile/edit', to: 'users#update'
-  post '/profile', to: 'users#update'
+
+  get '/profile/:id', to: 'users#show', as: :profile
+  get '/my-profile/edit', to: 'users#edit', as: :edit_profile
+  patch '/my-profile/edit', to: 'users#update'
 
   # Sessions
   get '/login', to: 'sessions#new', as: :login

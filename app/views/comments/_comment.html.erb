@@ -6,15 +6,9 @@
                                             } %>
 
   <div class="span6">
+    <h5><%= link_to comment.post.title, post_path(comment.post) if display_post %></h5>
     <p><%= comment.body %></p>
-    <p>
-      <span class="quiet">Posted by</span>
-      <%= display_user(comment.creator) %>
-      <small><%= datetime_formatter(comment.created_at) %></small>
-    </p>
-    <p>
-      <span class="quiet">Related to <%= link_to comment.post.title, post_path(comment.post) %></span>
-    </p>
+    <%= render 'shared/creator_details', obj: comment %>
   </div>
   
 </div>
