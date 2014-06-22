@@ -1,8 +1,8 @@
+<%= render 'shared/content_title', title: "Post: #{@post.title}" %>
+
 <p>
   <%= render @post.categories %>
 </p>
-
-<%= render 'shared/content_title', title: "Post: #{@post.title}" %>
 
 <p><strong>URL: </strong><%= @post.url %></p>
 <p><strong>Description: </strong><%= @post.description %></p>
