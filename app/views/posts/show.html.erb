@@ -10,8 +10,8 @@
 <br>
 
 <small>
-  <%= link_to('Edit', edit_post_path(@post)) if current_user %>
-  <%= '|' if current_user %>
+  <%= link_to('Edit', edit_post_path(@post)) if (current_user && (current_user == @post.creator) )%>
+  <%= '|' if (current_user && (current_user == @post.creator) ) %>
   <%= link_to 'Back to All Posts', posts_path %>
 </small>
 

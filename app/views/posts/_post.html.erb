@@ -18,7 +18,7 @@
       <span>
         <%= link_to "#{post.comments.size} #{"comment".pluralize(post.comments.size)}", post_path(post) %>
       </span>
-      <% if logged_in? %>
+      <% if logged_in? && (current_user == post.creator) %>
         <span>
           <%= link_to "(Edit)", edit_post_path(post) %>
         </span>

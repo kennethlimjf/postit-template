@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update]
   before_action :authorize_user, only: [:create, :edit, :new, :update, :vote]
+  before_action :allow_edit_update, only: [:edit, :update]
 
 
   def index
@@ -59,5 +60,12 @@ class PostsController < ApplicationController
 
     def post_params
       params.require(:post).permit(:title, :url, :description, category_ids: [])
+    end
+
+    def allow_edit_update
+      unless @post.creator == current_user
+        flash[:error] = "You do not own this post"
+        redirect_to root_path
+      end
     end
 end
