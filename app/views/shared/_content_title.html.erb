@@ -1,4 +1,6 @@
-<% all_posts = link_to('All Posts', root_path) %>
+<% all_posts = link_to(root_path, class: "home") do %>
+  <%= image_tag 'home.png', style: "width: 35px; height: 35px" %>
+<% end %>
 <% trailing = (defined? title) ? " &raquo; #{title}" : "" %>
 
 <p class="lead"><%= "#{all_posts}#{trailing}".html_safe %></p>
