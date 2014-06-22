@@ -4,5 +4,5 @@ class Vote < ActiveRecord::Base
 
   validates :vote, :inclusion => { :in => [-1,1] }
   validates_presence_of :creator
-  validates_uniqueness_of :creator, scope: :voteable, message: "You can only vote for a post once."
+  validates_uniqueness_of :creator, scope: [:voteable_id, :voteable_type], message: "You can only vote once."
 end

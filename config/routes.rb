@@ -3,7 +3,9 @@ PostitTemplate::Application.routes.draw do
   get '/posts/explore', to: 'posts#explore', as: :explore
   resources :posts, except: [:destroy] do
     post '/vote', to: 'posts#vote', on: :member, as: :vote
-    resources :comments, only: [:create]
+    resources :comments, only: [:create] do
+      post '/vote', to: 'comments#vote', on: :member, as: :vote
+    end
   end
   resources :categories, only: [:new, :create, :show]
 

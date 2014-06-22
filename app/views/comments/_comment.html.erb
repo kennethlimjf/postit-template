@@ -1,9 +1,21 @@
-<p><%= comment.body %></p>
-<p>
-  <span class="quiet">Posted by</span>
-  <%= display_user(comment.creator) %>
-  <small><%= datetime_formatter(comment.created_at) %></small>
-</p>
-<p>
-  <span class="quiet">Related to <%= link_to comment.post.title, post_path(comment.post) %></span>
-</p>
+<div class="row">
+
+  <%= render partial: 'votes/vote', locals: { vote_up_path: vote_post_comment_path( { post_id: comment.post.id, id: comment.id, vote: 1 } ),
+                                              vote_down_path: vote_post_comment_path( { post_id: comment.post.id, id: comment.id, vote: -1 } ),
+                                              obj: comment
+                                            } %>
+
+  <div class="span6">
+    <p><%= comment.body %></p>
+    <p>
+      <span class="quiet">Posted by</span>
+      <%= display_user(comment.creator) %>
+      <small><%= datetime_formatter(comment.created_at) %></small>
+    </p>
+    <p>
+      <span class="quiet">Related to <%= link_to comment.post.title, post_path(comment.post) %></span>
+    </p>
+  </div>
+  
+</div>
+
