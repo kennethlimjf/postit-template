@@ -11,7 +11,7 @@ class Post < ActiveRecord::Base
   validates :title, presence: true
   validates :url, presence: true
 
-  before_save { generate_slug(self, :title) }
+  before_create { generate_slug(self, :title) }
 
   def create_vote(options={})
     user = options[:creator]
