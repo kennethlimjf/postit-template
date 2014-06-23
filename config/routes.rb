@@ -26,4 +26,9 @@ PostitTemplate::Application.routes.draw do
   post '/slug', to: 'slugs#slug', as: :slug
   get '/make-me-admin', to: 'slugs#admin'
   get '/make-me-normal', to: 'slugs#normal'
+
+  # API
+  namespace :api do
+    resources :posts, only: :index, defaults: { format: 'json' }
+  end
 end
