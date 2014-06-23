@@ -21,7 +21,7 @@
         <%= render(@user.posts) || "No posts by #{@user.username}" %>
       </div>
       <div class="tab-pane" id="comments">
-        <div class="span8 well">
+        <div class="span10 well">
           <%= render(partial: 'comments/comment', collection: @user.comments.order("created_at DESC"), locals: { display_post: true }, spacer_template: 'comments/comment_spacer') || "No comments by #{@user.username}" %>
         </div>
       </div>

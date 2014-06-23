@@ -1,7 +1,7 @@
 <%= render 'shared/form_errors', form_obj: @comment %>
 
 <%= form_for [@post, @comment] do |f| %>
-  <%= f.text_area :body, rows: '3', style: 'width: 80%;' %>
+  <%= f.text_area :body, rows: '3', style: 'width: 95%;' %>
   <br>
   <%= f.submit class: "btn btn-info" %>
 <% end %>

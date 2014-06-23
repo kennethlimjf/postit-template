@@ -5,11 +5,9 @@ module ApplicationHelper
   end
 
   def datetime_formatter(datetime)
-    if current_user
-      time_zone = current_user.try(:time_zone)
-      datetime.in_time_zone(time_zone).strftime("%d %b %Y,%l:%M %p (%Z%z)")
-    else
-      datetime.strftime("%d %b %Y,%l:%M %p (%Z%z)")
+    if datetime
+      time_zone = current_user.try(:time_zone) || Time.zone.name
+      datetime.in_time_zone(time_zone).strftime("%d %b %Y,%l:%M %p (%Z%z)")  
     end
   end
 

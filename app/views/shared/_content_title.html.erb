@@ -1,7 +1,11 @@
-<% all_posts = link_to(root_path, class: "home") do %>
-  <%= image_tag 'home.png', style: "width: 35px; height: 35px" %>
-<% end %>
-<% trailing = (defined? title) ? " &raquo; #{title}" : "" %>
+<div class="row">
+  <div class="span12">
+    <% all_posts = link_to(root_path, class: "home") do %>
+      <%= image_tag 'home.png', style: "width: 35px; height: 35px" %>
+    <% end %>
+    <% trailing = (defined? title) ? " &raquo; #{title}" : "" %>
 
-<p class="lead"><%= "#{all_posts}#{trailing}".html_safe %></p>
-<hr/>
+    <p class="lead"><%= "#{all_posts}#{trailing}".html_safe %></p>
+    <hr/>
+  </div>
+</div>
