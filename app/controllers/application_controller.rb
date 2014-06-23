@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
     end
 
     def access_denied
-      flash[:notice] = "You do not have rights to do this."
+      flash[:error] = "You do not have rights to do this."
       redirect_to :back
     end
 end
