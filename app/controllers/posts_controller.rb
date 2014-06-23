@@ -71,8 +71,8 @@ class PostsController < ApplicationController
     end
 
     def allow_edit_update
-      unless @post.creator == current_user
-        flash[:error] = "You do not own this post"
+      unless allowed_to_edit_update? @post
+        flash[:error] = "You are not allowed to edit this post"
         redirect_to root_path
       end
     end
