@@ -6,5 +6,5 @@ class Category < ActiveRecord::Base
 
   validates :name, presence: true, uniqueness: true
 
-  before_create { generate_slug :name }
+  has_slug :name
 end
