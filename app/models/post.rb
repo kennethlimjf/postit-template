@@ -10,6 +10,5 @@ class Post < ActiveRecord::Base
   validates :title, presence: true
   validates :url, presence: true
 
-  before_create { generate_slug(self, :title) }
-
+  has_slug :title
 end
