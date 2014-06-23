@@ -1,4 +1,5 @@
 module Sluggable
+  extend ActiveSupport::Concern
 
   def generate_slug(obj, property)
     generated_slug = obj[property].strip.gsub(/[[:space:]]/, "-").gsub(/[^A-Za-z0-9\-]/, "").gsub(/-+/, "-").downcase
